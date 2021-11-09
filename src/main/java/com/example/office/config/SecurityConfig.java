@@ -1,6 +1,7 @@
 package com.example.office.config;
 
 import com.example.office.exception.RestAuthenticationEntryPoint;
+//import com.example.office.filter.JwtAuthenticationFilter;
 import com.example.office.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -29,9 +30,9 @@ class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.cors().and().csrf().disable();
 
-        http.
-                exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
-                .and().authorizeRequests()
+        http.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+
+                .authorizeRequests()
                 .antMatchers("/user/login").permitAll()
                 .anyRequest().authenticated();
 
